@@ -1,6 +1,30 @@
 const roll = (function () {
-
   "use strict";
+
+  const dice = {
+    d2: range(2),
+    d4: range(4),
+    d6: range(6),
+    d8: range(8),
+    d10: range(10),
+    d12: range(12),
+    d20: range(20),
+  };
+
+  /**
+   * Create an array of integers from 1 to n.
+   * @param {number} n The final integer.
+   * @returns {number[]} An array of integers.
+   */
+  function range(n) {
+    const nums = [];
+
+    for (let i = 1; i <= n; i += 1) {
+      nums.push(i);
+    }
+
+    return nums;
+  }
 
   /**
    * Randomly shuffle an array.
@@ -28,27 +52,11 @@ const roll = (function () {
   }
 
   /**
-   * Create an array of integers from start to end.
-   * @param {number} start The starting integer.
-   * @param {number} end The ending integer.
-   * @returns {number[]} An array of integers.
-   */
-  function range(start, end) {
-    const nums = [];
-
-    for (let num = start; num <= end; num += 1) {
-      nums.push(num);
-    }
-
-    return nums;
-  }
-
-  /**
    * Roll a two-sided die.
    * @returns {number} An integer from 1 to 2 inclusive.
    */
   function d2() {
-    return shuffle(range(1, 2))[0];
+    return shuffle(dice.d2)[0];
   }
 
   /**
@@ -56,7 +64,7 @@ const roll = (function () {
    * @returns {number} An integer from 1 to 4 inclusive.
    */
   function d4() {
-    return shuffle(range(1, 4))[0];
+    return shuffle(dice.d4)[0];
   }
 
   /**
@@ -64,7 +72,7 @@ const roll = (function () {
    * @returns {number} An integer from 1 to 6 inclusive.
    */
   function d6() {
-    return shuffle(range(1, 6))[0];
+    return shuffle(dice.d6)[0];
   }
 
   /**
@@ -72,7 +80,7 @@ const roll = (function () {
    * @returns {number} An integer from 1 to 8 inclusive.
    */
   function d8() {
-    return shuffle(range(1, 8))[0];
+    return shuffle(dice.d8)[0];
   }
 
   /**
@@ -80,7 +88,7 @@ const roll = (function () {
    * @returns {number} An integer from 1 to 10 inclusive.
    */
   function d10() {
-    return shuffle(range(1, 10))[0];
+    return shuffle(dice.d10)[0];
   }
 
   /**
@@ -88,7 +96,7 @@ const roll = (function () {
    * @returns {number} An integer from 1 to 12 inclusive.
    */
   function d12() {
-    return shuffle(range(1, 12))[0];
+    return shuffle(dice.d12)[0];
   }
 
   /**
@@ -96,9 +104,8 @@ const roll = (function () {
    * @returns {number} An integer from 1 to 20 inclusive.
    */
   function d20() {
-    return shuffle(range(1, 20))[0];
+    return shuffle(dice.d20)[0];
   }
 
   return { d2, d4, d6, d8, d10, d12, d20 };
-
 })();
