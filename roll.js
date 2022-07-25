@@ -2,54 +2,16 @@ const roll = (function () {
   "use strict";
 
   const dice = {
-    d2: range(2),
-    d4: range(4),
-    d6: range(6),
-    d8: range(8),
-    d10: range(10),
-    d12: range(12),
-    d20: range(20),
+    d2: [1, 2],
+    d4: [1, 2, 3, 4],
+    d6: [1, 2, 3, 4, 5, 6],
+    d8: [1, 2, 3, 4, 5, 6, 7, 8],
+    d10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    d12: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    d20: [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    ],
   };
-
-  /**
-   * Create an array of integers from 1 to n.
-   * @param {number} n The final integer.
-   * @returns {number[]} An array of integers.
-   */
-  function range(n) {
-    const nums = [];
-
-    for (let i = 1; i <= n; i += 1) {
-      nums.push(i);
-    }
-
-    return nums;
-  }
-
-  /**
-   * Randomly shuffle an array.
-   * https://stackoverflow.com/a/2450976/1293256
-   * @param {any[]} array The array to shuffle.
-   * @returns {any[]} The shuffled array.
-   */
-  function shuffle(array) {
-    let currentIndex = array.length;
-    let temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
 
   /**
    * Roll a two-sided die.
@@ -105,6 +67,31 @@ const roll = (function () {
    */
   function d20() {
     return shuffle(dice.d20)[0];
+  }
+
+  /**
+   * Randomly shuffle an array.
+   * https://stackoverflow.com/a/2450976/1293256
+   * @param {any[]} array The array to shuffle.
+   * @returns {any[]} The shuffled array.
+   */
+  function shuffle(array) {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
   }
 
   return { d2, d4, d6, d8, d10, d12, d20 };
