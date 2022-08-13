@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Library</title>
+    <style>
+      body {
+        width: 88%;
+        max-width: 40em;
+        margin: 1em auto;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Dice Library</h1>
+    </header>
+    <main>
+      <p>All of the magic here happens in the console. &#x2728;</p>
+    </main>
+    <script type="module">
+      // import some functions
+      import { d6, d20 } from "./roll.js";
+
+      // roll some dice
+      let roll1 = d6();
+      let roll2 = d20();
+
+      console.log(roll1, roll2);
+    </script>
+  </body>
+</html>
